@@ -3,7 +3,7 @@
 
 ### Installation
 ```sh
-$ git clone git@github.com:fyalavuz/nginx-dashboard-visitors.git
+$ git clone git@github.com:fyalavuz/nginx-visitors-dashboard.git
 $ cd nginx-dashboard-visitors
 $ npm install
 ```
