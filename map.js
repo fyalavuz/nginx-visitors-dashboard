@@ -1,3 +1,5 @@
+var nginxLogFile = '/var/log/nginx/access.log';
+
 const blessed = require('blessed'),
 	contrib = require('blessed-contrib'),
 	screen = blessed.screen(),
@@ -7,6 +9,7 @@ const blessed = require('blessed'),
 
 var limit = 100;
 var grid = new contrib.grid({rows: 12, cols: 12, screen: screen})
+
 
 //grid.set(row, col, rowSpan, colSpan, obj, opts)
 var map = grid.set(0, 0, 12, 10, contrib.map, {label: 'Latest ' + limit + ' visitors'})
@@ -30,7 +33,7 @@ var parser = new NginxParser('$remote_addr - $remote_user [$time_local] '
 + '"$request" $status $body_bytes_sent "$http_referer" "$http_user_agent"');
 
 
-parser.tail('/projects/blessed-contrib/examples/nginx.log', function (row) {
+parser.tail(nginxLogFile, function (row) {
 	var uaParser = new UAparser(row.http_user_agent);
 	var browser = uaParser.getBrowser();
     if (browser.name) {
