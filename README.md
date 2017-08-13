@@ -6,10 +6,11 @@
 $ git clone git@github.com:fyalavuz/nginx-dashboard-visitors.git
 $ cd nginx-dashboard-visitors
 $ npm install
+```
+You should edit map.js for nginx log file path before start the script.
+If your nginx access.log file is located like this '/var/log/nginx/access.log' you don't need to change anything.
 
-you should edit map.js for nginx log file path
-if your nginx access.log file is located in '/var/log/nginx/access.log' you don't need to change anything.
-
+```sh
 $ node map.js
 ```
 
