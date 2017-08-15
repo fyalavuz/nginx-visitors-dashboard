@@ -56,12 +56,11 @@ parser.tail(nginxLogFile, function (row) {
 		opereatigSystemLog.log('Uknown OS');
 	}
 
-	// browserLog.log(ua.getBrowser().name);
-	request.get('http://freegeoip.net/json/' + row.ip_str, function(error, response, body) {
-		body = JSON.parse(body);
-		countryLog.log(body.country_name  + ' (' + (body.region_name ? body.region_name : 'unknown') + ')');
-		createMarker(body.longitude, body.latitude);
-	});
+        request.get('http://ipinfobox.com/api/' + row.ip_str, function(error, response, body) {
+                body = JSON.parse(body);
+                countryLog.log(body.country_name  + ' (' + (body.region_name ? body.region_name : 'unknown') + ')');
+                createMarker(body.longitude, body.latitude);
+        });
 });
 
 var addMarkers = function() {
